@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SILVERIS FILMS | Portafolio Audiovisual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Videos de fondo -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="video1">
+            <source src="assets/videos/F1.mp4" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline id="video2">
+            <source src="assets/videos/F2.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Capa de contenido -->
+    <div class="content-overlay">
+        <!-- Menú fijo -->
+        <nav id="navbar">
+            <ul>
+                <li><a href="#perfil">Perfil</a></li>
+                <li><a href="#trabajos">Trabajos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!-- Sección Perfil -->
+        <section id="perfil" class="section">
+            <div class="content">
+                <h1>SILVERIS FILMS</h1>
+                <p>Es un refugio creativo en Rosario, Argentina, donde las historias encuentran su pulso en las imágenes y los sonidos. Somos narradores enamorados del cine. Cada videoclip que creamos —muchos nacidos de nuestra propia chispa— es un viaje, un lienzo donde la música y la emoción se chocan con la luz.
+                    No solo filmamos; exploramos. Desde la crudeza urbana hasta los destellos de lo cotidiano, nuestro trabajo captura lo que vibra bajo la superficie. En Silveris Films, hacemos cine para sentir, para soñar, para contar lo que no se dice.</p>
+            </div>
+        </section>
+
+        <!-- Sección Trabajos -->
+        <section id="trabajos" class="section">
+            <div class="content">
+                <h2>Trabajos Recientes</h2>
+                <div class="video-grid">
+                    <div class="video-container">
+                        <iframe src="https://player.vimeo.com/video/948496630?h=28d88cf36c" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://player.vimeo.com/video/1063707422?h=1311b9da0f" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="section">
+            <div class="content">
+                <h2>Contacto</h2>
+                <div class="contact-buttons">
+                    <a href="mailto:silverisfilms@gmail.com" class="btn-contact">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="https://instagram.com/silverisfilms" target="_blank" class="btn-contact">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://vimeo.com/user212729048" target="_blank" class="btn-contact">
+                        <i class="fab fa-vimeo-v"></i> Vimeo
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div> <!-- Cierre de content-overlay -->
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

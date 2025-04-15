@@ -1,0 +1,199 @@
+/* Reset y estilos generales */
+body {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Videos de fondo */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.video-background video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-background video:first-child {
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 1.5s ease;
+}
+
+.video-background video:last-child {
+    z-index: -2;
+    opacity: 0;
+}
+
+/* Capa de contenido */
+.content-overlay {
+    position: relative;
+    background: rgba(255, 255, 255, 0.85);
+    min-height: 100vh;
+}
+
+/* Navbar */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+#navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+#navbar a:hover {
+    opacity: 0.7;
+}
+
+/* Secciones */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 20px 60px;
+}
+
+.section .content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Sección Perfil */
+#perfil h1 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+}
+
+#perfil p {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Sección Trabajos */
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Sección Contacto */
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.btn-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+.btn-contact:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #perfil h1 {
+        font-size: 2.5rem;
+    }
+    
+    #perfil p {
+        font-size: 1.1rem;
+    }
+    
+    #navbar li {
+        margin: 0 10px;
+    }
+    
+    .contact-buttons {
+        gap: 15px;
+    }
+    
+    .btn-contact {
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    #perfil h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-contact {
+        width: 100%;
+        justify-content: center;
+    }
+}
