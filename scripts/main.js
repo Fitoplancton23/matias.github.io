@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Control de videos de fondo
     const video1 = document.getElementById('video1');
     const video2 = document.getElementById('video2');
+    const perfilSection = document.getElementById('perfil');
+    if (perfilSection) {
+        perfilSection.style.animation = 'fadeIn 3s ease-in-out forwards';
+    }
     let currentVideo = video1;
 
     function initVideos() {
