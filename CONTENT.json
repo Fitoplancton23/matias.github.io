@@ -1,0 +1,50 @@
+{
+  "services": [
+    {
+      "id": "cortos",
+      "title": "Cortometrajes",
+      "description": "Música original para cortos cinematográficos.",
+      "deliverables": "Pistas finales y stems",
+      "formats": "WAV, stems",
+      "timeline": "2-4 semanas"
+    },
+    {
+      "id": "largometrajes",
+      "title": "Largometrajes",
+      "description": "Composición para largometrajes con orquestación completa.",
+      "deliverables": "Pistas finales y stems",
+      "formats": "WAV, stems",
+      "timeline": "4-8 semanas"
+    },
+    {
+      "id": "videojuegos",
+      "title": "Videojuegos",
+      "description": "Soundtracks adaptativos para videojuegos.",
+      "deliverables": "Loops, cues y stems",
+      "formats": "WAV, stems",
+      "timeline": "3-6 semanas"
+    },
+    {
+      "id": "publicidad",
+      "title": "Publicidad",
+      "description": "Identidades sonoras para campañas publicitarias.",
+      "deliverables": "Pistas finales",
+      "formats": "WAV",
+      "timeline": "1-2 semanas"
+    },
+    {
+      "id": "arreglos",
+      "title": "Arreglos",
+      "description": "Arreglos para otros artistas y ensambles.",
+      "deliverables": "Partituras y pistas",
+      "formats": "PDF, WAV",
+      "timeline": "1-3 semanas"
+    }
+  ],
+  "spotify": [
+    "https://open.spotify.com/embed/track/550eru7FK2oLvbBGdZ5yUp?utm_source=generator"
+  ],
+  "soundcloud": [
+    "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1474273369&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+  ]
+}

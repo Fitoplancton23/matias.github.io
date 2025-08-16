@@ -1,639 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matias Pedros | Compositor</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Variables y estilos base */
-        :root {
-            --color-bg: #f9f9f9;
-            --color-text: #1a1a1a;
-            --color-accent: #eac510;
-            --color-light: #e8e8e8;
-            --color-dark: #0a0a0a;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 2rem;
-            --spacing-xl: 4rem;
-            --border-radius: 4px;
-            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Helvetica, sans-serif;
-            line-height: 1.6;
-            color: var(--color-text);
-            background-color: var(--color-bg);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* Tipografía */
-        h1, h2, h3, h4 {
-            font-family: Helvetica, sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        h1 {
-            font-size: 5rem;
-            margin-bottom: var(--spacing-sm);
-            line-height: 1.1;
-        }
-
-        h2 {
-            font-size: 3.5rem;
-            margin-bottom: var(--spacing-lg);
-        }
-
-        h3 {
-            font-size: 2rem;
-            margin-bottom: var(--spacing-md);
-        }
-
-        h4 {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        p {
-            margin-bottom: var(--spacing-md);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        /* Layout */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-lg);
-        }
-
-        section {
-            padding: var(--spacing-xl) 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        /* Menú de navegación */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: var(--spacing-md) var(--spacing-lg);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: transparent;
-            transition: var(--transition);
-        }
-
-        nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: var(--shadow);
-            padding: 15px var(--spacing-lg);
-        }
-
-        .logo {
-            font-family: Helvetica, sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-text);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        nav.scrolled .logo {
-            color: var(--color-dark);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: var(--spacing-lg);
-        }
-
-        .nav-links a {
-            color: var(--color-text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            transition: var(--transition);
-            padding: 8px 0;
-        }
-
-        nav.scrolled .nav-links a {
-            color: var(--color-dark);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--color-accent);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), 
-                        url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
-            color: white;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            padding: var(--spacing-xl);
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: var(--spacing-lg);
-            opacity: 0.8;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .hero-text {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto var(--spacing-xl);
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
-
-        /* Biografía */
-        .bio {
-            background: white;
-        }
-
-        .bio-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-            align-items: center;
-        }
-
-        .bio-text {
-            padding-right: var(--spacing-lg);
-        }
-
-        .bio-image {
-            height: 600px;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .bio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .bio-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .accent-line {
-            width: 80px;
-            height: 3px;
-            background-color: var(--color-accent);
-            margin: var(--spacing-md) 0 var(--spacing-lg);
-        }
-
-        /* Trabajos */
-        .works {
-            background: var(--color-bg);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--color-accent);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--spacing-lg);
-        }
-
-        .work-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .work-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .work-media {
-            height: 300px;
-            background: linear-gradient(45deg, #1a1a1a, #3a3a3a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .work-media i {
-            font-size: 4rem;
-            opacity: 0.3;
-            transition: var(--transition);
-        }
-
-        .work-card:hover .work-media i {
-            opacity: 0.7;
-            transform: scale(1.2);
-        }
-
-        .work-info {
-            padding: var(--spacing-lg);
-        }
-
-        .work-info h3 {
-            margin-bottom: var(--spacing-sm);
-            color: var(--color-dark);
-        }
-
-        /* Contacto */
-        .contact {
-            background: var(--color-dark);
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-        }
-
-        .contact-info {
-            margin: var(--spacing-lg) 0;
-            font-size: 1.2rem;
-        }
-
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-            display: block;
-            margin: 15px 0;
-            font-weight: 300;
-        }
-
-        .contact-info a:hover {
-            color: var(--color-accent);
-        }
-
-        .contact-info i {
-            margin-right: 15px;
-            font-size: 1.5rem;
-            vertical-align: middle;
-            color: var(--color-accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--color-accent);
-            transform: translateY(-5px);
-        }
-
-        /* Footer */
-        footer {
-            background: #0a0a0a;
-            color: rgba(255, 255, 255, 0.6);
-            text-align: center;
-            padding: var(--spacing-lg) 0;
-            font-size: 0.9rem;
-        }
-
-        /* Animaciones */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 3.5rem;
-            }
-            
-            h2 {
-                font-size: 2.5rem;
-            }
-            
-            .bio-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .bio-text {
-                padding-right: 0;
-                margin-bottom: var(--spacing-lg);
-            }
-            
-            .bio-image {
-                height: 400px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: var(--spacing-md) 5%;
-            }
-            
-            .nav-links {
-                gap: var(--spacing-md);
-            }
-            
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .works-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matías Pedrós | Compositor</title>
+  <meta name="description" content="Composición de música original para cine, videojuegos y publicidad." />
+  <link rel="preconnect" href="https://open.spotify.com" />
+  <link rel="preconnect" href="https://w.soundcloud.com" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    body{font-family:Helvetica,sans-serif;margin:0;line-height:1.5;color:#222;background:#f9f9f9}
+    header{background:#fff;position:sticky;top:0;z-index:10;border-bottom:1px solid #ddd}
+    nav{max-width:960px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:1rem}
+    nav a{margin:0 0.5rem;text-decoration:none;color:#222}
+    .hero{padding:6rem 1rem;text-align:center;background:#eac510;color:#000}
+    .hero h1{font-size:2.5rem;margin-bottom:1rem}
+    .btn{display:inline-block;margin:.5rem;padding:.75rem 1.5rem;background:#007aff;color:#fff;text-decoration:none;border:none;border-radius:999px;font-weight:600;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:background .3s,transform .1s}.btn:hover{background:#0060df}.btn:active{transform:scale(.98)}.btn:focus{outline:2px solid #000;outline-offset:2px}.btn.cotizar{background:#34c759}.btn.cotizar:hover{background:#28a745}
+    section{max-width:960px;margin:auto;padding:4rem 1rem}
+    #services-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+    .service-card{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+    .service-card h3{margin-top:0}
+    .embed-container{position:relative;width:100%;padding-top:56.25%}
+    .embed-container iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+    form{display:grid;gap:0.5rem;max-width:500px;margin:auto}
+    input,textarea{padding:0.5rem;border:1px solid #ccc;border-radius:4px}
+    footer{background:#222;color:#fff;padding:2rem 1rem;text-align:center}
+    footer a{color:#fff}
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Matías Pedrós",
+      "jobTitle": "Composer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Córdoba",
+        "addressCountry": "AR"
+      }
+    }
+  </script>
 </head>
 <body>
-    <!-- Menú de navegación -->
-    <nav id="navbar">
-        <a href="#" class="logo">Matias Pedros</a>
-        <div class="nav-links">
-            <a href="#bio">Biografía</a>
-            <a href="#works">Obras</a>
-            <a href="#contact">Contacto</a>
-        </div>
+  <header>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <div>
+        <a href="#servicios">Servicios</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </nav>
-
-    <!-- Hero section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Matias Pedros</h1>
-                <div class="hero-subtitle">Compositor Musical</div>
-                <p class="hero-text">Licenciado en composición musical por la Universidad Nacional de Villa María. Creando emociones a través de la armonía y la melodía.</p>
-            </div>
-        </div>
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+  </header>
+  <main>
+    <section id="inicio" class="hero">
+      <h1>Matías Pedrós</h1>
+      <p>Composición de música original para proyectos audiovisuales.</p>
+      <a class="btn" href="#contacto">Pedí presupuesto</a>
+      <a class="btn" href="#portfolio">Escuchá el portfolio</a>
     </section>
 
-    <!-- Biografía -->
-    <section class="bio fade-in" id="bio">
-        <div class="container">
-            <div class="bio-content">
-                <div class="bio-text">
-                    <div class="section-subtitle">Sobre mí</div>
-                    <h2>Biografía</h2>
-                    <div class="accent-line"></div>
-                    <p>Nacido en Aristóbulo del Valle, Misiones, Matias Pedros es un compositor cuya obra refleja la rica diversidad cultural de su tierra natal combinada con técnicas compositivas contemporáneas.</p>
-                    <p>Graduado de la Licenciatura en Composición Musical en la Universidad Nacional de Villa María (UNVM), Matias ha desarrollado un lenguaje musical único que fusiona elementos folklóricos con sonoridades vanguardistas.</p>
-                    <p>Su trabajo abarca diversas formas musicales, desde piezas de cámara y obras sinfónicas hasta composiciones para cine y teatro. Cada obra es un viaje emocional que invita al oyente a explorar nuevas dimensiones sonoras.</p>
-                </div>
-                <div class="bio-image">
-                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Matias Pedros">
-                </div>
-            </div>
-        </div>
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <div id="services-container"></div>
     </section>
 
-    <!-- Trabajos -->
-    <section class="works fade-in" id="works">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Mi trabajo</div>
-                <h2>Composiciones</h2>
-                <div class="accent-line" style="margin: 0 auto var(--spacing-lg);"></div>
-            </div>
-            
-            <div class="works-grid">
-                <div class="work-card">
-                    <div class="work-media">
-                        <i class="fab fa-soundcloud"></i>
-                    </div>
-                    <div class="work-info">
-                        <h3>Raíces del Valle</h3>
-                        <p>Obra sinfónica inspirada en los paisajes de Misiones. Una exploración de texturas sonoras que evocan la naturaleza en su estado más puro.</p>
-                    </div>
-                </div>
-                
-                <div class="work-card">
-                    <div class="work-media">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div class="work-info">
-                        <h3>Horizontes Perdidos</h3>
-                        <p>Composición para cuarteto de cuerdas que juega con las disonancias y resoluciones armónicas para crear tensión y liberación emocional.</p>
-                    </div>
-                </div>
-                
-                <div class="work-card">
-                    <div class="work-media">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <div class="work-info">
-                        <h3>Silencios Hablados</h3>
-                        <p>Obra electroacústica que combina sonidos de campo con sintetizadores, creando un paisaje sonoro surrealista.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div id="spotify-container" aria-label="Ejemplo Spotify"></div>
+      <div id="soundcloud-container" aria-label="Ejemplo SoundCloud" style="margin-top:1.5rem"></div>
     </section>
 
-    <!-- Contacto -->
-    <section class="contact fade-in" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div>
-                    <div class="section-subtitle" style="color: var(--color-accent);">Contacto</div>
-                    <h2 style="color: white;">Trabajemos juntos</h2>
-                    <div class="accent-line"></div>
-                    
-                    <div class="contact-info">
-                        <a href="mailto:matiaspedros@mail.com">
-                            <i class="fas fa-envelope"></i> matiaspedros@mail.com
-                        </a>
-                        <a href="tel:+543755500947">
-                            <i class="fas fa-phone"></i> +54 3755 500947
-                        </a>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-soundcloud"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-spotify"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <div class="section-subtitle" style="color: var(--color-accent);">Ubicación</div>
-                    <h3 style="color: white;">Aristóbulo del Valle, Misiones</h3>
-                    <div class="accent-line"></div>
-                    <p style="color: rgba(255,255,255,0.8);">Nacido y criado en la tierra colorada, donde la selva y las cataratas inspiran mi creación musical.</p>
-                </div>
-            </div>
-        </div>
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p>Matías Pedrós es un compositor de 26 años egresado de la Universidad de Villa María (Córdoba, Argentina). Ofrece música original para cine, videojuegos, publicidad y arreglos para artistas.</p>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Matias Pedros. Todos los derechos reservados.</p>
-            <p style="margin-top: var(--spacing-sm);">Licenciado en composición musical - Universidad Nacional de Villa María (UNVM)</p>
-        </div>
-    </footer>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Nombre" aria-label="Nombre" required />
+        <input type="email" name="email" placeholder="Email" aria-label="Email" required />
+        <textarea name="message" placeholder="Mensaje" aria-label="Mensaje" required></textarea>
+        <button type="submit" class="btn">Enviar</button>
+        <div id="contact-status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
 
-    <script>
-        // Efecto de cambio en el menú al hacer scroll
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
+  <footer>
+    <p>Contacto directo: <a href="mailto:matiasjosuepedros@gmail.com">matiasjosuepedros@gmail.com</a></p>
+    <p>Sígueme en <a href="https://open.spotify.com">Spotify</a> y <a href="https://soundcloud.com">SoundCloud</a></p>
+    <p>&copy; 2024 Matías Pedrós</p>
+  </footer>
 
-        // Desplazamiento suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Animación al hacer scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.fade-in').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Animación para el botón de scroll
-        document.querySelector('.scroll-down').addEventListener('click', function(e) {
-            e.preventDefault();
-            const firstSection = document.querySelector('section.bio');
-            window.scrollTo({
-                top: firstSection.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+  <script type="module" src="scripts/render.js"></script>
+  <script type="module" src="scripts/contact.js"></script>
 </body>
 </html>
