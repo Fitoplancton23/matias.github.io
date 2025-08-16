@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     content.services.forEach(s => {
       const card = document.createElement('div');
       card.className = 'service-card';
-      card.innerHTML = `<h3>${s.title}</h3><p>${s.description}</p><p><strong>Entregables:</strong> ${s.deliverables}</p><p><strong>Formatos:</strong> ${s.formats}</p><p><strong>Plazos:</strong> ${s.timeline}</p><button class="cotizar" data-service="${s.id}">Solicitar cotización</button>`;
+      card.innerHTML = `<h3>${s.title}</h3><p>${s.description}</p><p><strong>Entregables:</strong> ${s.deliverables}</p><p><strong>Formatos:</strong> ${s.formats}</p><p><strong>Plazos:</strong> ${s.timeline}</p><a href="#contacto" class="btn cotizar" data-service="${s.id}">Solicitar cotización</a>`;
       servicesContainer.appendChild(card);
     });
   }
