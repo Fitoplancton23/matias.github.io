@@ -1,0 +1,190 @@
+/* Fuente global */
+html, body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Botones */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .375rem;
+  padding: .5rem 1rem;
+  font-size: .875rem;
+  font-weight: 500;
+  background: #171717;
+  color: #fff;
+  transition: background .2s ease;
+  text-decoration: none;
+}
+.btn-primary:hover { background: #000; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .375rem;
+  padding: .5rem 1rem;
+  font-size: .875rem;
+  font-weight: 500;
+  border: 1px solid #d4d4d4;
+  color: #171717;
+  background: transparent;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+  text-decoration: none;
+}
+.btn-ghost:hover { background: #f5f5f5; }
+
+/* Variante para fondos oscuros (hero) */
+.btn-ghost--on-dark {
+  border-color: rgba(255,255,255,.8);
+  color: #fff;
+}
+.btn-ghost--on-dark:hover { background: rgba(255,255,255,.12); }
+
+/* Secciones */
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+.section:last-of-type { border-bottom: 0; }
+.container {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.section-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 640px) {
+  .section-title { font-size: 1.875rem; line-height: 2.25rem; }
+}
+
+/* Navegación */
+.nav-link {
+  color: #404040;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.nav-link:hover { color: #171717; }
+
+/* Embeds de SoundCloud/Spotify */
+.sc-embed iframe { width: 100%; }
+
+/* Atribución pequeña bajo el player */
+.sc-attr {
+  font-size: 10px;
+  color: #999;
+  line-break: anywhere;
+  word-break: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  margin-top: .25rem;
+}
+
+/* Descripción de cada track */
+.track-desc {
+  margin-top: .75rem;
+  color: #404040;
+  line-height: 1.75;
+}
+
+/* Bloque de prensa */
+.press-quote { border-left: 2px solid #d4d4d4; padding-left: 1rem; }
+
+/* Prosa mínima */
+.prose p { line-height: 1.75; }
+.prose ul { list-style: disc; padding-left: 1.5rem; }
+.prose li { margin: .25rem 0; }
+
+/* Suaviza desplazamiento nativo */
+html { scroll-behavior: smooth; }
+
+/* Estado activo del link en el nav (scrollspy) */
+.nav-link.active {
+  color: #171717;
+  position: relative;
+}
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #171717;
+}
+
+/* Animaciones de aparición al hacer scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease;
+  will-change: opacity, transform;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+.reveal[data-reveal-delay="100"] { transition-delay: .1s; }
+.reveal[data-reveal-delay="200"] { transition-delay: .2s; }
+.reveal[data-reveal-delay="300"] { transition-delay: .3s; }
+
+/* ===========================
+   Scroll-snap para canciones
+   =========================== */
+@media (max-width: 768px) {
+  /* Contenedor que scrollea: el viewport */
+  html {
+    scroll-snap-type: y proximity; /* 'mandatory' para snap más firme */
+  }
+  /* Cada tema se alinea al inicio del viewport */
+  #songs .sc-embed {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;      /* 'always' si querés que siempre encastre */
+    scroll-margin-top: 88px;       /* compensa header sticky */
+    margin-bottom: 2.5rem;
+  }
+}
+:root {
+  --space-track: 3rem;     /* espacio entre temas (mobile) */
+  --space-track-desktop: 4rem; /* espacio entre temas (desktop) */
+  --space-inner: 1rem;     /* espacio entre player y textos */
+}
+
+/* 2) Pila vertical con gap (aseguramos layout) */
+.songs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-track);
+}
+
+/* 3) Espacio interno entre elementos del mismo track */
+.sc-attr { 
+  margin-top: var(--space-inner);
+}
+.track-desc {
+  margin-top: calc(var(--space-inner) * 1.25);
+}
+
+/* 4) Más aire alrededor de cada track (opcional) */
+#songs .sc-embed {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+/* 5) En pantallas grandes ampliamos el gap */
+@media (min-width: 768px) {
+  .songs-stack {
+    gap: var(--space-track-desktop);
+  }
+}
