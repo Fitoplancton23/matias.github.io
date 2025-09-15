@@ -1,101 +1,275 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matías Pedrós | Compositor</title>
-  <meta name="description" content="Composición de música original para cine, videojuegos y publicidad." />
-  <link rel="preconnect" href="https://open.spotify.com" />
-  <link rel="preconnect" href="https://w.soundcloud.com" />
-  <link rel="stylesheet" href="styles/main.css" />
-  <style>
-    body{font-family:Helvetica,sans-serif;margin:0;line-height:1.5;color:#222;background:#f9f9f9}
-    header{background:#fff;position:sticky;top:0;z-index:10;border-bottom:1px solid #ddd}
-    nav{max-width:960px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:1rem}
-    nav a{margin:0 0.5rem;text-decoration:none;color:#222}
-    .hero{padding:6rem 1rem;text-align:center;background:#eac510;color:#000}
-    .hero h1{font-size:2.5rem;margin-bottom:1rem}
-    .btn{display:inline-block;margin:.5rem;padding:.75rem 1.5rem;background:#007aff;color:#fff;text-decoration:none;border:none;border-radius:999px;font-weight:600;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:background .3s,transform .1s}.btn:hover{background:#0060df}.btn:active{transform:scale(.98)}.btn:focus{outline:2px solid #000;outline-offset:2px}.btn.cotizar{background:#34c759}.btn.cotizar:hover{background:#28a745}
-    section{max-width:960px;margin:auto;padding:4rem 1rem}
-    #services-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
-    .service-card{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
-    .service-card h3{margin-top:0}
-    .embed-container{position:relative;width:100%;padding-top:56.25%}
-    .embed-container iframe{position:absolute;top:0;left:0;width:100%;height:100%}
-    form{display:grid;gap:0.5rem;max-width:500px;margin:auto}
-    input,textarea{padding:0.5rem;border:1px solid #ccc;border-radius:4px}
-    footer{background:#222;color:#fff;padding:2rem 1rem;text-align:center}
-    footer a{color:#fff}
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Matías Pedros — Compositor / Productor / Sound Designer</title>
+  <meta name="description" content="Página oficial de Matías Pedros: compositor, productor y sound design. Escuchá obras seleccionadas, trabajos para cine/TV, podcasts y contactalo para tu proyecto." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Matías Pedros — Compositor / Productor / Sound Designer" />
+  <meta property="og:description" content="Escuchá mis obras seleccionadas y contactáme para tu proyecto." />
+  <meta property="og:type" content="website" />
+
+  <!-- JSON-LD Person -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Matías Pedrós",
-      "jobTitle": "Composer",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Córdoba",
-        "addressCountry": "AR"
-      }
-    }
-  </script>
+{
+  "@context": "https://schema.org",
+  "@type": "Musician",
+  "name": "Matías Pedros",
+  "jobTitle": "Compositor / Productor musical / Diseñador de sonido",
+  "email": "mailto:matiasjosuepedros@gmail.com",
+  "url": "https://tudominio.com/",
+  "sameAs": [
+    "https://soundcloud.com/TU_USUARIO",
+    "https://open.spotify.com/intl-es/artist/0J4YnV2jJanI3mOPhRwtrz?si=5Q5kH4JeR0SJ3PFOQMO1Qg",
+    "https://www.instagram.com/matiaspedros_/"
+  ]
+}
+</script>
+
+  <!-- Tailwind CSS CDN (modo JIT) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Estilos propios mínimos -->
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
-<body>
-  <header>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <div>
-        <a href="#servicios">Servicios</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#contacto">Contacto</a>
+<body class="bg-neutral-50 text-neutral-900 selection:bg-neutral-900 selection:text-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="font-semibold tracking-tight">Matías&nbsp;Pedros</a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex gap-6 text-sm">
+          <a class="nav-link" href="#bio">Bio</a>
+          <a class="nav-link" href="#songs">Música</a>
+          <a class="nav-link" href="#film-tv">Cine/TV</a>
+          <a class="nav-link" href="#podcast">Podcast</a>
+          <a class="nav-link" href="#press">Prensa</a>
+          <a class="nav-link" href="#contact">Contacto</a>
+        </nav>
+
+        <!-- Mobile button -->
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-md border border-neutral-300 px-3 py-2 text-sm">
+          Menú
+        </button>
       </div>
-    </nav>
+
+      <!-- Mobile nav -->
+      <nav id="mobileNav" class="hidden md:hidden pb-4">
+        <div class="grid gap-2 text-sm">
+          <a class="nav-link" href="#bio">Bio</a>
+          <a class="nav-link" href="#songs">Música</a>
+          <a class="nav-link" href="#film-tv">Cine/TV</a>
+          <a class="nav-link" href="#podcast">Podcast</a>
+          <a class="nav-link" href="#press">Prensa</a>
+          <a class="nav-link" href="#contact">Contacto</a>
+        </div>
+      </nav>
+    </div>
   </header>
-  <main>
-    <section id="inicio" class="hero">
-      <h1>Matías Pedrós</h1>
-      <p>Composición de música original para proyectos audiovisuales.</p>
-      <a class="btn" href="#contacto">Enviame tu idea</a>
-      <a class="btn" href="#portfolio">Escuchá mi catálogo</a>
-    </section>
- 
-<section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <p>Soy compositor egresado de la Universidad de Villa María (Córdoba, Argentina). Me dedico a crear música original para cine, videojuegos, publicidad y arreglos para artistas...</p>
-    </section>
 
-    <section id="servicios">
-      <h2>Servicios</h2>
-      <div id="services-container"></div>
-    </section>
+  <!-- Hero -->
+  <section class="relative border-b border-neutral-200">
+    <!-- Fondo con video -->
+    <div class="absolute inset-0">
+      <video
+        class="w-full h-full object-cover"
+        src="images/Hero.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
+      <!-- Capa oscura para contraste -->
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
 
-    <section id="portfolio">
-      <h2>Portfolio</h2>
-      <div id="spotify-container" aria-label="Ejemplo Spotify"></div>
-      <div id="soundcloud-container" aria-label="Ejemplo SoundCloud" style="margin-top:1.5rem"></div>
-    </section>
+    <!-- Contenido -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 py-28 sm:py-36">
+      <h1 class="text-4xl sm:text-6xl font-semibold leading-tight text-white drop-shadow-md">
+        Matías Pedros
+      </h1>
+      <p class="mt-4 text-lg sm:text-xl text-neutral-200">
+        Compositor · Productor · Diseñador de sonido
+      </p>
+      <p class="mt-6 max-w-xl text-neutral-100 leading-relaxed reveal">
+        Composición, arreglos, producción y diseño de sonido para artistas, cine/TV y podcasts.
+      </p>
+      <div class="mt-8 flex gap-4">
+        <a href="#contact" class="btn-primary">Contactar</a>
+        <a href="#songs" class="btn-ghost btn-ghost--on-dark">Escuchar</a>
+      </div>
+    </div>
+  </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="Nombre" aria-label="Nombre" required />
-        <input type="email" name="email" placeholder="Email" aria-label="Email" required />
-        <textarea name="message" placeholder="Mensaje" aria-label="Mensaje" required></textarea>
-        <button type="submit" class="btn">Enviar</button>
-        <div id="contact-status" role="status" aria-live="polite"></div>
-      </form>
-    </section>
-  </main>
+  <!-- Bio -->
+  <section id="bio" class="section">
+    <div class="container">
+      <h2 class="section-title">Bio</h2>
+      <div class="prose">
+        <p>
+          Soy compositor y productor argentino, con una profunda pasión por la música y el mundo audiovisual. Compongo, produzco y realizo diseño de sonido para proyectos musicales y audiovisuales en distintos formatos y estilos.
+          Estudié Composición en la Universidad Nacional de Villa María, donde me recibí de Licenciado en Composición Musical. A lo largo de mi recorrido he trabajado en una amplia variedad de contextos: desde composiciones originales para orquesta sinfónica y arreglos para banda, hasta la creación y producción de canciones, abarcando grabación y arreglos para diferentes ensambles como cuerdas o metales. También he realizado música original para podcasts destinados a educación y arreglos orquestales para teatro.
+          Actualmente ofrezco servicios de composición para todo tipo de proyectos: creación y producción de canciones, arreglos para cualquier formato instrumental, música original para medios audiovisuales y diseño de sonido. También, puedo sumarme en cualquier etapa del proceso creativo, desde la idea inicial hasta la producción final.
+          Además, cuando el proyecto lo requiere, cuento con la colaboración de músicos y profesionales especializados, garantizando siempre la mejor calidad artística y técnica.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>Contacto directo: <a href="mailto:matiasjosuepedros@gmail.com">matiasjosuepedros@gmail.com</a></p>
-    <p>Sígueme en <a href="https://open.spotify.com">Spotify</a> y <a href="https://soundcloud.com">SoundCloud</a></p>
-    <p>&copy; 2024 Matías Pedrós</p>
+  <!-- Música (1 por fila, full width, con scroll-snap) -->
+  <section id="songs" class="section bg-white">
+    <div class="container">
+      <h2 class="section-title">Música Seleccionada</h2>
+
+      <!-- Intro de la sección -->
+      <p class="text-neutral-700 leading-relaxed mb-6">
+        Aquí encontrarás composiciones creadas con la intención de ofrecer referencias claras de mi trabajo.
+      </p>
+
+      <!-- Pila vertical con separación entre temas -->
+      <div class="songs-stack">
+
+        <!-- Track 1 -->
+        <article class="sc-embed">
+          <iframe
+            title="Matías Pedrós — Gabriel de la guarda (SoundCloud)"
+            width="100%" height="360"
+            scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2170096512&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            loading="lazy">
+          </iframe>
+          <div class="sc-attr">
+            <a href="https://soundcloud.com/matias-pedros-306515498" target="_blank" rel="noopener">Matías Pedrós</a> ·
+            <a href="https://soundcloud.com/matias-pedros-306515498/gabriel-de-la-guarda" target="_blank" rel="noopener">Gabriel de la guarda</a>
+          </div>
+          <!-- Descripción del track 1 -->
+          <p class="track-desc">
+            <strong>Gabriel de la guarda</strong>: Esta pieza fue creada desde una perspectiva cinemática y tiene un desarrollo progresivo que se da a partir de una idea de cuatro compases. Combina la fuerza de la orquesta sinfónica con sintetizadores, secuenciadores y guitarras eléctricas, entre otros recursos sonoros.
+          </p>
+        </article>
+
+        <!-- Track 2 -->
+        <article class="sc-embed">
+          <iframe
+            title="Matías Pedrós — Sed (SoundCloud)"
+            width="100%" height="360"
+            scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2170101561&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            loading="lazy">
+          </iframe>
+          <div class="sc-attr">
+            <a href="https://soundcloud.com/matias-pedros-306515498" target="_blank" rel="noopener">Matías Pedrós</a> ·
+            <a href="https://soundcloud.com/matias-pedros-306515498/sed" target="_blank" rel="noopener">Sed</a>
+          </div>
+          <!-- Descripción del track 2 -->
+          <p class="track-desc">
+            <strong>Sed</strong>: Esta pieza se construye desde un arpegio de guitarra, sugiriendo la clave 3,3,2. Combina orquesta sinfónica, con guitarras acústicas y otro elementos sonoros. A lo largo encontramos diferentes orquestaciones del mismo tema.
+          </p>
+        </article>
+
+        <!-- Track 3 -->
+        <article class="sc-embed">
+          <iframe
+            title="Matías Pedrós — L’attesa (SoundCloud)"
+            width="100%" height="360"
+            scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2170104630&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            loading="lazy">
+          </iframe>
+          <div class="sc-attr">
+            <a href="https://soundcloud.com/matias-pedros-306515498" target="_blank" rel="noopener">Matías Pedrós</a> ·
+            <a href="https://soundcloud.com/matias-pedros-306515498/lattesa" target="_blank" rel="noopener">L’attesa</a>
+          </div>
+        </article>
+
+        <!-- Track 4 (Spotify) -->
+        <article class="sc-embed">
+          <iframe
+            title="Matías Pedrós — Pista (Spotify)"
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/track/550eru7FK2oLvbBGdZ5yUp?utm_source=generator&theme=0"
+            width="100%" height="352"
+            frameborder="0" allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Música para Cine/TV -->
+  <section id="film-tv" class="section">
+    <div class="container">
+      <h2 class="section-title">Música para Cine/TV</h2>
+      <div class="prose">
+        <p><!-- Pegar texto del PDF --></p>
+        <ul>
+          <li><!-- Crédito / proyecto / año --></li>
+          <li><!-- Crédito / proyecto / año --></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast -->
+  <section id="podcast" class="section bg-white">
+    <div class="container">
+      <h2 class="section-title">Podcast</h2>
+      <div class="prose">
+        <p><!-- Pegar texto del PDF --></p>
+        <ul>
+          <li><!-- Producción / diseño sonoro / show --></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prensa -->
+  <section id="press" class="section">
+    <div class="container">
+      <h2 class="section-title">Prensa</h2>
+      <div class="grid gap-6">
+        <!-- Repetir este bloque por cada quote -->
+        <blockquote class="press-quote">
+          <p class="italic leading-relaxed">
+            “Acá citamos alguna nota de entrevistas tuyas”
+          </p>
+          <footer class="mt-2 text-sm text-neutral-500">— Medio / Persona</footer>
+        </blockquote>
+        <!-- ... -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contact" class="section bg-white">
+    <div class="container">
+      <h2 class="section-title">Contacto</h2>
+      <p class="text-neutral-700 max-w-prose">
+        ¿Tenés un proyecto? Trabajemos juntos:
+        <a class="underline hover:no-underline" href="mailto:matiasjosuepedros@gmail.com">matiasjosuepedros@gmail.com</a>
+      </p>
+      <div class="mt-6">
+        <a href="mailto:matiasjosuepedros@gmail.com" class="btn-primary">Escribirme</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 py-10 text-sm text-neutral-500">
+      © <span id="year"></span> Matías Pedros. Todos los derechos reservados.
+    </div>
   </footer>
 
-  <script type="module" src="scripts/render.js"></script>
-  <script type="module" src="scripts/contact.js"></script>
+  <!-- Scripts -->
+  <script src="assets/main.js" defer></script>
 </body>
 </html>
